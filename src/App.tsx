@@ -254,88 +254,88 @@ const EventsView = () => (
 
 const VenueView = () => (
   <div className="min-h-screen flex flex-col selection:bg-primary/20">
-  {/* Top Navigation */}
-  <header className="bg-background/90 backdrop-blur-md sticky top-0 z-50 shadow-[0_10px_32px_rgba(141,0,10,0.04)]">
-    <div className="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto w-full">
-      <div className="flex items-center gap-2">
-        <Settings2 className="w-6 h-6 text-primary" />
-      </div>
-      <h1 className="font-headline italic tracking-wide text-2xl text-primary font-bold">
-        Our Eternal Bond
-      </h1>
-      <div className="w-6" /> {/* Spacer */}
-    </div>
-  </header>
-
-  {/* Main Content */}
-  <main className="flex-grow flex flex-col items-center justify-center px-6 py-12 relative overflow-hidden">
-    {/* Background Motif */}
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none -rotate-15">
-      <Flower2 className="w-[40rem] h-[40rem]" />
-    </div>
-
-    {/* Hero Section */}
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="max-w-xl w-full text-center z-10"
-    >
-      <div className="mb-12">
-        <Bed className="w-16 h-16 text-tertiary mx-auto mb-6" />
-        <h2 className="font-headline text-4xl md:text-5xl font-bold italic text-primary leading-tight mb-4">
-          Guest Accommodations
-        </h2>
-        <div className="flex items-center justify-center gap-4 mb-8">
-          <div className="h-[1px] w-8 bg-outline-variant/30" />
-          <Circle className="w-2 h-2 fill-tertiary text-tertiary" />
-          <Circle className="w-2 h-2 fill-tertiary text-tertiary" />
-          <Circle className="w-2 h-2 fill-tertiary text-tertiary" />
-          <div className="h-[1px] w-8 bg-outline-variant/30" />
+    {/* Top Navigation */}
+    <header className="bg-background/90 backdrop-blur-md sticky top-0 z-50 shadow-[0_10px_32px_rgba(141,0,10,0.04)]">
+      <div className="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto w-full">
+        <div className="flex items-center gap-2">
+          <Settings2 className="w-6 h-6 text-primary" />
         </div>
+        <h1 className="font-headline italic tracking-wide text-2xl text-primary font-bold">
+          Our Eternal Bond
+        </h1>
+        <div className="w-6" /> {/* Spacer */}
+      </div>
+    </header>
+
+    {/* Main Content */}
+    <main className="flex-grow flex flex-col items-center justify-center px-6 py-12 relative overflow-hidden">
+      {/* Background Motif */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none -rotate-15">
+        <Flower2 className="w-[40rem] h-[40rem]" />
       </div>
 
-      {/* Central Card */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.2, duration: 0.6 }}
-        className="bg-white p-8 md:p-12 shadow-[0_10px_32px_rgba(141,0,10,0.04)] relative"
+      {/* Hero Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="max-w-xl w-full text-center z-10"
       >
-        {/* Decorative Corner Accents */}
-        <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-outline-variant/20" />
-        <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-outline-variant/20" />
-        
-        <div className="space-y-6">
-          <p className="font-headline italic text-2xl text-on-surface-variant leading-relaxed">
-            "Your comfort is our joy. We are currently finalizing the most elegant arrangements for your stay."
-          </p>
-          
-          <div className="py-4">
-            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-stone-100 text-on-surface-variant uppercase tracking-widest text-[10px] font-bold">
-              <Clock className="w-3 h-3" />
-              Update Expected
-            </div>
+        <div className="mb-12">
+          <Bed className="w-16 h-16 text-tertiary mx-auto mb-6" />
+          <h2 className="font-headline text-4xl md:text-5xl font-bold italic text-primary leading-tight mb-4">
+            Guest Accommodations
+          </h2>
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <div className="h-[1px] w-8 bg-outline-variant/30" />
+            <Circle className="w-2 h-2 fill-tertiary text-tertiary" />
+            <Circle className="w-2 h-2 fill-tertiary text-tertiary" />
+            <Circle className="w-2 h-2 fill-tertiary text-tertiary" />
+            <div className="h-[1px] w-8 bg-outline-variant/30" />
           </div>
+        </div>
 
-          <p className="font-body text-on-surface-variant font-medium text-lg">
-            Accommodation and stay details will be shared by the early to mid-week of April 2026.
-          </p>
+        {/* Central Card */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="bg-white p-8 md:p-12 shadow-[0_10px_32px_rgba(141,0,10,0.04)] relative"
+        >
+          {/* Decorative Corner Accents */}
+          <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-outline-variant/20" />
+          <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-outline-variant/20" />
+
+          <div className="space-y-6">
+            <p className="font-headline italic text-2xl text-on-surface-variant leading-relaxed">
+              "Your comfort is our joy. We are currently finalizing the most elegant arrangements for your stay."
+            </p>
+
+            <div className="py-4">
+              <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-stone-100 text-on-surface-variant uppercase tracking-widest text-[10px] font-bold">
+                <Clock className="w-3 h-3" />
+                Update Expected
+              </div>
+            </div>
+
+            <p className="font-body text-on-surface-variant font-medium text-lg">
+              Accommodation and stay details will be shared by the early to mid-week of April 2026.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Signature Motif Footer */}
+        <div className="mt-16 flex justify-center opacity-30">
+          <img
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs91mYK42Pfn9kl-jvxC9ubbAgorU44SP7dw9oZX1YIrAV7SVgUhrmat2IwyLFXQGGyb8MnzHPJJJKK0_X0fuc06Z3o9Rqvi6Q0wYp3EHDyupI2Vd_TovJfluzC79ve3197Fi4iwk8Q0BHNq1UIWh1k9krE0dMQOqj1ZRB3dCBMdYPyDuW5QvwIJ3GokNrMU7LXIQzaqa5VfPYaK2p10c91laFqNHgqDkknlecjYV6-5AGuzXS20TonL9dquDmDvdXJqWBtL8rR1Y"
+            alt="Traditional lotus flower motif"
+            className="w-16 h-16 grayscale sepia brightness-50"
+            referrerPolicy="no-referrer"
+          />
         </div>
       </motion.div>
-
-      {/* Signature Motif Footer */}
-      <div className="mt-16 flex justify-center opacity-30">
-        <img 
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs91mYK42Pfn9kl-jvxC9ubbAgorU44SP7dw9oZX1YIrAV7SVgUhrmat2IwyLFXQGGyb8MnzHPJJJKK0_X0fuc06Z3o9Rqvi6Q0wYp3EHDyupI2Vd_TovJfluzC79ve3197Fi4iwk8Q0BHNq1UIWh1k9krE0dMQOqj1ZRB3dCBMdYPyDuW5QvwIJ3GokNrMU7LXIQzaqa5VfPYaK2p10c91laFqNHgqDkknlecjYV6-5AGuzXS20TonL9dquDmDvdXJqWBtL8rR1Y" 
-          alt="Traditional lotus flower motif" 
-          className="w-16 h-16 grayscale sepia brightness-50"
-          referrerPolicy="no-referrer"
-        />
-      </div>
-    </motion.div>
-  </main>
-</div>
+    </main>
+  </div>
 );
 
 const RsvpView = ({ data }: { data: any }) => {
@@ -398,6 +398,7 @@ const RsvpView = ({ data }: { data: any }) => {
         <div className="space-y-2">
           <label className="text-xs font-bold text-gray-400 tracking-widest uppercase">Full Name</label>
           <input
+            required
             type="text"
             className="w-full bg-white border border-black/5 rounded-xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-brand-red/20 transition-all"
             placeholder="Enter your name"
@@ -408,6 +409,7 @@ const RsvpView = ({ data }: { data: any }) => {
         <div className="space-y-2">
           <label className="text-xs font-bold text-gray-400 tracking-widest uppercase">Phone Number</label>
           <input
+            required
             className="w-full bg-white border border-black/5 rounded-xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-brand-red/20 transition-all"
             type="number"
             id="phone"
@@ -421,6 +423,7 @@ const RsvpView = ({ data }: { data: any }) => {
           <div className="space-y-2">
             <label className="text-xs font-bold text-gray-400 tracking-widest uppercase">No. of Guests</label>
             <select
+              required
               className="w-full bg-white border border-black/5 rounded-xl px-4 py-4 focus:outline-none transition-all"
               value={formData.guests}
               onChange={e => setFormData({ ...formData, guests: e.target.value })}
@@ -456,6 +459,7 @@ const RsvpView = ({ data }: { data: any }) => {
             <div className="space-y-2">
               <label className="text-xs font-bold text-gray-400 tracking-widest uppercase">Date of Arrival</label>
               <input
+                required
                 type="date"
                 className="w-full bg-white border border-black/5 rounded-xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-brand-red/20 transition-all"
                 value={formData.arrivalDate}
@@ -470,6 +474,7 @@ const RsvpView = ({ data }: { data: any }) => {
             <div className="space-y-2">
               <label className="text-xs font-bold text-gray-400 tracking-widest uppercase">Time of Arrival</label>
               <input
+                required
                 type="time"
                 className="w-full bg-white border border-black/5 rounded-xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-brand-red/20 transition-all"
                 value={formData.arrivalTime}
