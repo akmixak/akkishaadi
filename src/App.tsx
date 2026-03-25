@@ -627,7 +627,7 @@ export default function App() {
   }, [activeTab]);
 
   useLayoutEffect(() => {
-    fetch("https://api.jsonbin.io/v3/b/69bff1ddaa77b81da90a29c3/latest", {
+    fetch("https://api.jsonbin.io/v3/b/69c3add9c3097a1dd55a61b1/latest", {
       method: "GET",
     })
       .then((response) => response.json())
