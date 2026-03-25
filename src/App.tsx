@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import {
   MapPin,
   Calendar,
@@ -11,17 +11,17 @@ import {
   Circle,
   Bed,
   UserCheck,
-  Settings2
-} from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-import PhotoCarousel from './components/PhotoCarousel';
-import ak1 from './assets/ak.jpeg';
-import ak2 from './assets/ak2.jpeg';
-import ak3 from './assets/ak3.jpeg';
-import ak4 from './assets/ak4.jpeg';
+  Settings2,
+} from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import PhotoCarousel from "./components/PhotoCarousel";
+import ak1 from "./assets/ak.jpeg";
+import ak2 from "./assets/ak2.jpeg";
+import ak3 from "./assets/ak3.jpeg";
+import ak4 from "./assets/ak4.jpeg";
 
 // --- Types ---
-type Tab = 'invitation' | 'events' | 'venue' | 'rsvp';
+type Tab = "invitation" | "events" | "venue" | "rsvp";
 
 interface Event {
   id: string;
@@ -36,46 +36,50 @@ interface Event {
 // --- Constants ---
 const EVENTS: Event[] = [
   {
-    id: 'tilak',
-    name: 'Tilak Ceremony',
-    date: 'Wednesday, 15th April 2026',
-    time: '10:00 AM',
-    description: 'A ceremonial exchange of gifts and blessings uniting both families.',
-    location: 'Vatika Banquet & Lawn',
-    locationLink: 'https://maps.app.goo.gl/YJgpnn61xsnDXRM2A?g_st=aw'
+    id: "tilak",
+    name: "Tilak Ceremony",
+    date: "Wednesday, 15th April 2026",
+    time: "10:00 AM",
+    description:
+      "A ceremonial exchange of gifts and blessings uniting both families.",
+    location: "Vatika Banquet & Lawn",
+    locationLink: "https://maps.app.goo.gl/YJgpnn61xsnDXRM2A?g_st=aw",
   },
   {
-    id: 'matkor',
-    name: 'Matkor',
-    date: 'Friday, 17th April 2026',
-    description: 'A lively pre-wedding ritual of soil gathering, songs, and joyful traditions.',
-    location: 'Home',
-    locationLink: 'https://maps.app.goo.gl/2jBESuEr5hoyqmX17?g_st=aw'
+    id: "matkor",
+    name: "Matkor",
+    date: "Friday, 17th April 2026",
+    description:
+      "A lively pre-wedding ritual of soil gathering, songs, and joyful traditions.",
+    location: "Home",
+    locationLink: "https://maps.app.goo.gl/2jBESuEr5hoyqmX17?g_st=aw",
   },
   {
-    id: 'mehndi',
-    name: 'Mehendi, Sangeet And Mandapam',
-    date: 'Saturday, 18th April 2026',
-    description: 'An evening of music, dance, and celebration, culminating in a vibrant and colorful evening.',
-    location: 'Home',
-    locationLink: 'https://maps.app.goo.gl/2jBESuEr5hoyqmX17?g_st=aw'
+    id: "mehndi",
+    name: "Mehendi, Sangeet And Mandapam",
+    date: "Saturday, 18th April 2026",
+    description:
+      "An evening of music, dance, and celebration, culminating in a vibrant and colorful evening.",
+    location: "Home",
+    locationLink: "https://maps.app.goo.gl/2jBESuEr5hoyqmX17?g_st=aw",
   },
   {
-    id: 'upanayanam',
-    name: 'Upanayanam And Devpujan',
-    description: 'A sacred thread ceremony marking a spiritual initiation.',
-    date: 'Sunday, 19th April 2026',
-    location: 'Home',
-    locationLink: 'https://maps.app.goo.gl/2jBESuEr5hoyqmX17?g_st=aw'
+    id: "upanayanam",
+    name: "Upanayanam And Devpujan",
+    description: "A sacred thread ceremony marking a spiritual initiation.",
+    date: "Sunday, 19th April 2026",
+    location: "Home",
+    locationLink: "https://maps.app.goo.gl/2jBESuEr5hoyqmX17?g_st=aw",
   },
   {
     id: "wedding",
-    name: 'Wedding',
-    description: 'A joyous union celebrating love, commitment, and the beginning of togetherness.',
-    date: 'Monday, 20th April 2026',
-    location: 'Panache Banquet Hall',
-    locationLink: 'https://maps.app.goo.gl/HukiqjgDGZLMttt48'
-  }
+    name: "Wedding",
+    description:
+      "A joyous union celebrating love, commitment, and the beginning of togetherness.",
+    date: "Monday, 20th April 2026",
+    location: "Panache Banquet Hall",
+    locationLink: "https://maps.app.goo.gl/HukiqjgDGZLMttt48",
+  },
 ];
 
 // --- Components ---
@@ -83,16 +87,32 @@ const EVENTS: Event[] = [
 const Header = () => (
   <header className="sticky top-0 z-50 bg-brand-cream/80 backdrop-blur-md border-b border-black/5 px-6 py-4 flex items-center justify-center gap-3">
     <Flower2 className="w-5 h-5 text-brand-red" />
-    <h1 className="text-xl font-bold italic text-brand-red">Our Eternal Bond</h1>
+    <h1 className="text-xl font-bold italic text-brand-red">
+      Our Eternal Bond
+    </h1>
   </header>
 );
 
-const BottomNav = ({ activeTab, setActiveTab }: { activeTab: Tab, setActiveTab: (tab: Tab) => void }) => {
+const BottomNav = ({
+  activeTab,
+  setActiveTab,
+}: {
+  activeTab: Tab;
+  setActiveTab: (tab: Tab) => void;
+}) => {
   const navItems: { id: Tab; label: string; icon: React.ReactNode }[] = [
-    { id: 'invitation', label: 'INVITATION', icon: <Sparkles className="w-5 h-5" /> },
-    { id: 'events', label: 'EVENTS', icon: <Calendar className="w-5 h-5" /> },
-    { id: 'venue', label: 'Stay Details', icon: <MapPin className="w-5 h-5" /> },
-    { id: 'rsvp', label: 'RSVP', icon: <UserCheck className="w-5 h-5" /> },
+    {
+      id: "invitation",
+      label: "INVITATION",
+      icon: <Sparkles className="w-5 h-5" />,
+    },
+    { id: "events", label: "EVENTS", icon: <Calendar className="w-5 h-5" /> },
+    {
+      id: "venue",
+      label: "Stay Details",
+      icon: <MapPin className="w-5 h-5" />,
+    },
+    { id: "rsvp", label: "RSVP", icon: <UserCheck className="w-5 h-5" /> },
   ];
 
   return (
@@ -101,18 +121,28 @@ const BottomNav = ({ activeTab, setActiveTab }: { activeTab: Tab, setActiveTab: 
         <button
           key={item.id}
           onClick={() => setActiveTab(item.id)}
-          className={`flex flex-col items-center gap-1 transition-colors ${activeTab === item.id ? 'text-brand-red' : 'text-gray-400'
-            }`}
+          className={`flex flex-col items-center gap-1 transition-colors ${
+            activeTab === item.id ? "text-brand-red" : "text-gray-400"
+          }`}
         >
           {item.icon}
-          <span className="text-[10px] font-bold tracking-wider">{item.label}</span>
+          <span className="text-[10px] font-bold tracking-wider">
+            {item.label}
+          </span>
         </button>
       ))}
     </nav>
   );
 };
 
-const InvitationView = ({ onRsvpClick, onItineraryClick }: { onRsvpClick: () => void, onItineraryClick: () => void, key?: string }) => (
+const InvitationView = ({
+  onRsvpClick,
+  onItineraryClick,
+}: {
+  onRsvpClick: () => void;
+  onItineraryClick: () => void;
+  key?: string;
+}) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -123,19 +153,53 @@ const InvitationView = ({ onRsvpClick, onItineraryClick }: { onRsvpClick: () => 
     <section className="flex flex-col items-center text-center px-6 pt-12 pb-16">
       <div className="mb-8 relative">
         <div className="absolute inset-0 bg-brand-red/5 rounded-full blur-3xl -z-10" />
-        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-brand-red">
-          <path d="M4 21V9L12 3L20 9V21H4Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M9 21V14H15V21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M12 3V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M8 7H16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        <svg
+          width="80"
+          height="80"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="text-brand-red"
+        >
+          <path
+            d="M4 21V9L12 3L20 9V21H4Z"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M9 21V14H15V21"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M12 3V7"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M8 7H16"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </div>
 
-      <span className="text-xs font-bold tracking-[0.3em] text-brand-gold uppercase mb-4">Shubh Vivah</span>
+      <span className="text-xs font-bold tracking-[0.3em] text-brand-gold uppercase mb-4">
+        Shubh Vivah
+      </span>
       <h2 className="text-6xl italic mb-8">Eternal Union</h2>
 
       <p className="text-lg leading-relaxed text-gray-700 max-w-xs italic">
-        Together with our families, we joyfully invite you to celebrate the beginning of our forever.
+        Together with our families, we joyfully invite you to celebrate the
+        beginning of our forever.
       </p>
 
       <div className="flex gap-4 mt-12">
@@ -149,10 +213,10 @@ const InvitationView = ({ onRsvpClick, onItineraryClick }: { onRsvpClick: () => 
     <section className="px-4 mb-12">
       <PhotoCarousel
         images={[
-          { src: ak1, alt: 'The Couple' },
-          { src: ak2, alt: 'The Couple' },
-          { src: ak3, alt: 'The Couple' },
-          { src: ak4, alt: 'The Couple' },
+          { src: ak1, alt: "The Couple" },
+          { src: ak2, alt: "The Couple" },
+          { src: ak3, alt: "The Couple" },
+          { src: ak4, alt: "The Couple" },
         ]}
       />
     </section>
@@ -180,7 +244,11 @@ const InvitationView = ({ onRsvpClick, onItineraryClick }: { onRsvpClick: () => 
           </p>
         </div>
 
-        <a href="https://maps.app.goo.gl/HukiqjgDGZLMttt48" target="_blank" className="w-full bg-brand-red text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-red-900 transition-colors">
+        <a
+          href="https://maps.app.goo.gl/HukiqjgDGZLMttt48"
+          target="_blank"
+          className="w-full bg-brand-red text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-red-900 transition-colors"
+        >
           <Navigation className="w-4 h-4" />
           GET DIRECTIONS
         </a>
@@ -208,7 +276,8 @@ const InvitationView = ({ onRsvpClick, onItineraryClick }: { onRsvpClick: () => 
     <footer className="px-8 text-center pb-12">
       <Leaf className="w-6 h-6 text-brand-gold mx-auto mb-6 rotate-45" />
       <p className="italic text-gray-600 leading-relaxed">
-        "As the sacred fire witnesses our vows, your presence adds to the warmth of our new beginning."
+        "As the sacred fire witnesses our vows, your presence adds to the warmth
+        of our new beginning."
       </p>
     </footer>
   </motion.div>
@@ -235,14 +304,18 @@ const EventsView = () => (
             <div className="bg-brand-red/5 p-3 rounded-xl">
               <Clock className="w-5 h-5 text-brand-red" />
             </div>
-            <span className="text-xs font-bold text-brand-gold tracking-widest uppercase">{event.time}</span>
+            <span className="text-xs font-bold text-brand-gold tracking-widest uppercase">
+              {event.time}
+            </span>
           </div>
           <h3 className="text-xl font-bold mb-2">{event.name}</h3>
           <p className="text-sm text-gray-500 mb-4">{event.date}</p>
-          <p className="text-gray-600 text-sm leading-relaxed mb-4">{event.description}</p>
+          <p className="text-gray-600 text-sm leading-relaxed mb-4">
+            {event.description}
+          </p>
           <div className="flex items-center gap-2 text-xs font-bold text-brand-red">
             <MapPin className="w-3 h-3" />
-            <a href={event.locationLink} target='_blank'>
+            <a href={event.locationLink} target="_blank">
               {event.location}
             </a>
           </div>
@@ -308,7 +381,8 @@ const VenueView = () => (
 
           <div className="space-y-6">
             <p className="font-headline italic text-2xl text-on-surface-variant leading-relaxed">
-              "Your comfort is our joy. We are currently finalizing the most elegant arrangements for your stay."
+              "Your comfort is our joy. We are currently finalizing the most
+              elegant arrangements for your stay."
             </p>
 
             <div className="py-4">
@@ -319,7 +393,8 @@ const VenueView = () => (
             </div>
 
             <p className="font-body text-on-surface-variant font-medium text-lg">
-              Accommodation and stay details will be shared by the early to mid-week of April 2026.
+              Accommodation and stay details will be shared by the early to
+              mid-week of April 2026.
             </p>
           </div>
         </motion.div>
@@ -342,25 +417,25 @@ const RsvpView = ({ data }: { data: any }) => {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    guests: '1',
-    attending: '',
-    message: '',
-    arrivalDate: '',
-    arrivalTime: '',
-    phone: '',
+    name: "",
+    guests: "1",
+    attending: "",
+    message: "",
+    arrivalDate: "",
+    arrivalTime: "",
+    phone: "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
     setSubmitting(true);
     e.preventDefault();
-    await fetch('https://api.jsonbin.io/v3/b/69bff1ddaa77b81da90a29c3', {
-      method: 'PUT',
+    await fetch("https://api.jsonbin.io/v3/b/69c3add9c3097a1dd55a61b1", {
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ data: [...(data.record?.data || []), formData] }),
-    })
+    });
 
     setSubmitting(false);
     setSubmitted(true);
@@ -392,22 +467,28 @@ const RsvpView = ({ data }: { data: any }) => {
       className="px-6 pt-8 pb-24"
     >
       <h2 className="text-4xl italic mb-4 text-center">RSVP</h2>
-      <p className="text-center text-gray-500 mb-10">Kindly respond by April 7th, 2026</p>
+      <p className="text-center text-gray-500 mb-10">
+        Kindly respond by April 7th, 2026
+      </p>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="space-y-2">
-          <label className="text-xs font-bold text-gray-400 tracking-widest uppercase">Full Name</label>
+          <label className="text-xs font-bold text-gray-400 tracking-widest uppercase">
+            Full Name
+          </label>
           <input
             required
             type="text"
             className="w-full bg-white border border-black/5 rounded-xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-brand-red/20 transition-all"
             placeholder="Enter your name"
             value={formData.name}
-            onChange={e => setFormData({ ...formData, name: e.target.value })}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           />
         </div>
         <div className="space-y-2">
-          <label className="text-xs font-bold text-gray-400 tracking-widest uppercase">Phone Number</label>
+          <label className="text-xs font-bold text-gray-400 tracking-widest uppercase">
+            Phone Number
+          </label>
           <input
             required
             className="w-full bg-white border border-black/5 rounded-xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-brand-red/20 transition-all"
@@ -415,55 +496,71 @@ const RsvpView = ({ data }: { data: any }) => {
             id="phone"
             name="phone"
             placeholder="9999999999"
-            onChange={e => setFormData({ ...formData, phone: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, phone: e.target.value })
+            }
           />
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
-            <label className="text-xs font-bold text-gray-400 tracking-widest uppercase">No. of Guests</label>
+            <label className="text-xs font-bold text-gray-400 tracking-widest uppercase">
+              No. of Guests
+            </label>
             <select
               required
               className="w-full bg-white border border-black/5 rounded-xl px-4 py-4 focus:outline-none transition-all"
               value={formData.guests}
-              onChange={e => setFormData({ ...formData, guests: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, guests: e.target.value })
+              }
             >
-              {[1, 2, 3, 4, 5].map(n => <option key={n} value={n}>{n}</option>)}
+              {[1, 2, 3, 4, 5].map((n) => (
+                <option key={n} value={n}>
+                  {n}
+                </option>
+              ))}
             </select>
           </div>
           <div className="space-y-2">
-            <label className="text-xs font-bold text-gray-400 tracking-widest uppercase">Attending?</label>
+            <label className="text-xs font-bold text-gray-400 tracking-widest uppercase">
+              Attending?
+            </label>
             <select
               className="w-full bg-white border border-black/5 rounded-xl px-4 py-4 focus:outline-none transition-all"
               value={formData.attending}
-              onChange={e => {
+              onChange={(e) => {
                 const attending = e.target.value;
                 setFormData((prev) => ({
                   ...prev,
                   attending,
                   // If user declines, arrival details no longer apply.
-                  arrivalDate: attending === 'yes' ? prev.arrivalDate : '',
-                  arrivalTime: attending === 'yes' ? prev.arrivalTime : '',
+                  arrivalDate: attending === "yes" ? prev.arrivalDate : "",
+                  arrivalTime: attending === "yes" ? prev.arrivalTime : "",
                 }));
               }}
             >
-              <option value="" selected disabled>----</option>
+              <option value="" selected disabled>
+                ----
+              </option>
               <option value="yes">Accept</option>
               <option value="no">Decline</option>
             </select>
           </div>
         </div>
 
-        {formData.attending === 'yes' ? (
+        {formData.attending === "yes" ? (
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <label className="text-xs font-bold text-gray-400 tracking-widest uppercase">Date of Arrival</label>
+              <label className="text-xs font-bold text-gray-400 tracking-widest uppercase">
+                Date of Arrival
+              </label>
               <input
                 required
                 type="date"
                 className="w-full bg-white border border-black/5 rounded-xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-brand-red/20 transition-all"
                 value={formData.arrivalDate}
-                onChange={e =>
+                onChange={(e) =>
                   setFormData((prev) => ({
                     ...prev,
                     arrivalDate: e.target.value,
@@ -472,13 +569,15 @@ const RsvpView = ({ data }: { data: any }) => {
               />
             </div>
             <div className="space-y-2">
-              <label className="text-xs font-bold text-gray-400 tracking-widest uppercase">Time of Arrival</label>
+              <label className="text-xs font-bold text-gray-400 tracking-widest uppercase">
+                Time of Arrival
+              </label>
               <input
                 required
                 type="time"
                 className="w-full bg-white border border-black/5 rounded-xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-brand-red/20 transition-all"
                 value={formData.arrivalTime}
-                onChange={e =>
+                onChange={(e) =>
                   setFormData((prev) => ({
                     ...prev,
                     arrivalTime: e.target.value,
@@ -490,13 +589,17 @@ const RsvpView = ({ data }: { data: any }) => {
         ) : null}
 
         <div className="space-y-2">
-          <label className="text-xs font-bold text-gray-400 tracking-widest uppercase">Message (Optional)</label>
+          <label className="text-xs font-bold text-gray-400 tracking-widest uppercase">
+            Message (Optional)
+          </label>
           <textarea
             rows={4}
             className="w-full bg-white border border-black/5 rounded-xl px-4 py-4 focus:outline-none focus:ring-2 focus:ring-brand-red/20 transition-all"
             placeholder="Wishes for the couple..."
             value={formData.message}
-            onChange={e => setFormData({ ...formData, message: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, message: e.target.value })
+            }
           />
         </div>
 
@@ -515,7 +618,7 @@ const RsvpView = ({ data }: { data: any }) => {
 // --- Main App ---
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<Tab>('invitation');
+  const [activeTab, setActiveTab] = useState<Tab>("invitation");
   const [data, setData] = useState<any>({});
 
   // Scroll to top when tab changes
@@ -524,30 +627,33 @@ export default function App() {
   }, [activeTab]);
 
   useLayoutEffect(() => {
-    fetch('https://api.jsonbin.io/v3/b/69bff1ddaa77b81da90a29c3/latest', {
-      method: 'GET',
+    fetch("https://api.jsonbin.io/v3/b/69bff1ddaa77b81da90a29c3/latest", {
+      method: "GET",
     })
-      .then(response => response.json())
-      .then(data => setData(data))
-      .catch(error => console.error('Error fetching data:', error));
+      .then((response) => response.json())
+      .then((data) => setData(data))
+      .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
   return (
-    <div className="min-h-screen max-w-md mx-auto bg-brand-cream relative" style={{ background: 'beige' }}>
+    <div
+      className="min-h-screen max-w-md mx-auto bg-brand-cream relative"
+      style={{ background: "beige" }}
+    >
       <Header />
 
       <main className="relative">
         <AnimatePresence mode="wait">
-          {activeTab === 'invitation' && (
+          {activeTab === "invitation" && (
             <InvitationView
               key="invitation"
-              onRsvpClick={() => setActiveTab('rsvp')}
-              onItineraryClick={() => setActiveTab('events')}
+              onRsvpClick={() => setActiveTab("rsvp")}
+              onItineraryClick={() => setActiveTab("events")}
             />
           )}
-          {activeTab === 'events' && <EventsView key="events" />}
-          {activeTab === 'venue' && <VenueView key="venue" />}
-          {activeTab === 'rsvp' && <RsvpView key="rsvp" data={data} />}
+          {activeTab === "events" && <EventsView key="events" />}
+          {activeTab === "venue" && <VenueView key="venue" />}
+          {activeTab === "rsvp" && <RsvpView key="rsvp" data={data} />}
         </AnimatePresence>
       </main>
 
